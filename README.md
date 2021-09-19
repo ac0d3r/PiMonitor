@@ -47,7 +47,7 @@ $ make init
 
 **默认用户名密码：** `admin`:`admin`
 
-用浏览器访问 http://[your-raspberry-pi-ip]:8080 登陆后，可以查看实时视频画面（PC端下使用方向键控制舵机）。
+用浏览器访问 http://[your-raspberry-pi-ip]:8000 登陆后，可以查看实时视频画面（PC端下使用方向键控制舵机）。
 
 ## TODO
 
