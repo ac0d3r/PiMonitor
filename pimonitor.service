@@ -1,0 +1,18 @@
+[UNIT]
+
+Description=Pi Monitor
+
+After=network.target
+
+[Service]
+
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/PiMonitor
+Restart=on-failure
+RestartSec=5s
+ExecStart=/home/pi/PiMonitor/pimonitor
+PrivateTmp=True
+
+[Install]
+WantedBy=multi-user.target

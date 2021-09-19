@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PiMonitor 📺</title>
+    <link href="static/style.css" rel="stylesheet" type="text/css" />
+    <!-- ele -->
+    <link type="text/css" rel="stylesheet" href="static/element/fonts/element-icons.ttf">
+    <link type="text/css" rel="stylesheet" href="static/element/fonts/element-icons.woff">
+    <link type="text/css" rel="stylesheet" href="static/element/element-ui@2.15.6-lib-theme-chalk-index.css">
+</head>
+
+<body>
+    <script src="static/utils.js"></script>
+    <script src="static/element/vue.min.js"></script>
+    <script src="static/element/element-ui@2.15.6-lib-index.js"></script>
+    <div id="app">
+        <el-dialog title="Update user infomation" :visible.sync="updateFormVisible">
+            <el-form :model="updateForm">
+                <el-form-item label="Username" label-width="120px">
+                    <el-input v-model="updateForm.name" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="Password" label-width="120px">
+                    <el-input type="password" v-model="updateForm.password"></el-input>
+                </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="updateFormVisible = false">cancel</el-button>
+                <el-button type="primary" @click="userUpdateInfomation">Update</el-button>
+            </div>
+        </el-dialog>
+
+        <el-menu class="el-menu-demo" mode="horizontal" background-color="#d25" text-color="#fff"
+            active-text-color="#000">
+            <el-menu-item>PiMonitor</el-menu-item>
+            <el-submenu index="topbar-1" style="float: right;">
+                <template slot="title"><i class="el-icon-user"></i> </template>
+                <el-menu-item index="topbar-1-1" :disabled="!userLoginStatus" @click="updateFormVisible = true">
+                    <i class="el-icon-edit"></i>info
+                </el-menu-item>
+                <el-menu-item index="topbar-1-2" :disabled="!userLoginStatus" @click="userLogout">
+                    <i class="el-icon-circle-close"></i>logout
+                </el-menu-item>
+            </el-submenu>
+        </el-menu>
+        <!-- logo -->
+        <div class="center">
+            <el-image class="logo" :src="logoSrc"></el-image>
+            <!-- login -->
+            <div class="center" :hidden="userLoginStatus">
+                <el-form :model="loginForm" style="display:inline-block;">
+                    <el-form-item>
+                        <el-input v-model="loginForm.name" placeholder="Username"></el-input>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-input type="password" v-model="loginForm.password" placeholder="Password"></el-input>
+                    </el-form-item>
+                    <el-button type="danger" @click="userLogin">Log In</el-button>
+                </el-form>
+            </div>
+            <!-- video -->
+            <div :hidden="!userLoginStatus">
+                <el-empty description="Pi Monitor">
+                    <el-button type="danger" icon="el-icon-video-play" @click="goVideo">Play</el-button>
+                </el-empty>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>
