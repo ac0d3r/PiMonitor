@@ -7,6 +7,8 @@
 
 ---
 
+bilibili: https://www.bilibili.com/video/BV1rL411x7dt
+
 ## Hardware
 
 - 树莓派4b
