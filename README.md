@@ -42,7 +42,7 @@ servo.Init("16", "12", 15, 35, 10, 40)
 ```bash
 $ git clone https://github.com/Buzz2d0/PiMonitor.git
 $ cd PiMonitor
-$ make init
+$ make start
 ```
 
 # Usage

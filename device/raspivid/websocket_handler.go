@@ -112,7 +112,7 @@ Loop:
 				break Loop
 			}
 		case <-timer.C:
-			count = 30
+			count = w.opts.FPS
 		case <-wsClosed:
 			break Loop
 		}
